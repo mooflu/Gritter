@@ -201,6 +201,8 @@
 			// Remove it then run the callback function
 			e.remove();
 			this['_after_close_' + unique_id](e, manual_close);
+			// Make sure timer is cleared (when called via gritter.remove) 
+			clearTimeout(this['_int_id_' + unique_id]);
 			
 			// Check if the wrapper is empty, if it is.. remove the wrapper
 			if($('.gritter-item-wrapper').length == 0){
